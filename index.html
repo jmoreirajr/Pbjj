@@ -21,7 +21,7 @@
   .logo-wrap { display:flex; align-items:center; gap:12px; }
   .logo-wrap img { height:55px; width:55px; border-radius:50%; object-fit:cover; }
   .logo-wrap span { font-weight:600; font-size:17px; letter-spacing:0.5px; }
-  nav ul { display:flex; gap:30px; list-style:none; }
+  nav ul { display:flex; gap:26px; list-style:none; }
   nav ul li a { font-size:14px; font-weight:500; text-transform:uppercase; }
   nav ul li a:hover { color:var(--orange); }
 
@@ -36,9 +36,12 @@
   .btn {
     display:inline-block; background:var(--orange); color:#fff; font-weight:600;
     padding:14px 34px; border-radius:4px; text-transform:uppercase; font-size:14px;
-    letter-spacing:1px; transition:0.2s;
+    letter-spacing:1px; transition:0.2s; border:none; cursor:pointer;
   }
   .btn:hover { background:#e35d00; }
+  .btn-sm { padding:8px 18px; font-size:12px; border-radius:4px; }
+  .btn-outline { background:transparent; border:2px solid var(--orange); color:var(--orange); }
+  .btn-outline:hover { background:var(--orange); color:#fff; }
 
   section { padding:80px 40px; }
   .section-title { text-align:center; font-size:clamp(28px,5vw,44px); margin-bottom:10px; }
@@ -54,8 +57,18 @@
   .program-card p { font-size:14px; color:#ccc; line-height:1.6; margin-bottom:8px; }
   .program-card .age { font-size:12px; color:#888; text-transform:uppercase; letter-spacing:0.5px; }
 
+  /* FREE TRIAL */
+  .trial-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; max-width:900px; margin:0 auto; }
+  .trial-card {
+    background:linear-gradient(145deg,#151515,#0a0a0a); border:1px solid #222; border-radius:10px;
+    padding:40px 30px; text-align:center;
+  }
+  .trial-card:hover { border-color:var(--orange); }
+  .trial-card h3 { color:var(--orange); font-size:22px; margin-bottom:12px; }
+  .trial-card p { color:#ccc; font-size:14px; margin-bottom:22px; line-height:1.6; }
+
   /* SCHEDULE */
-  table { width:100%; max-width:900px; margin:0 auto; border-collapse:collapse; }
+  table { width:100%; max-width:950px; margin:0 auto; border-collapse:collapse; }
   th, td { padding:14px 16px; text-align:left; border-bottom:1px solid #222; font-size:14px; }
   th { background:#111; color:var(--orange); text-transform:uppercase; letter-spacing:0.5px; }
   tr:hover td { background:#0d0d0d; }
@@ -90,6 +103,28 @@
   footer a { color:var(--orange); }
   .footer-social { margin-top:15px; }
 
+  /* MODAL */
+  .modal-overlay {
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8);
+    z-index:999; align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-box {
+    background:#111; border:1px solid var(--orange); border-radius:10px;
+    max-width:420px; width:100%; padding:35px 30px; position:relative;
+  }
+  .modal-box h3 { color:var(--orange); font-size:24px; margin-bottom:8px; }
+  .modal-close {
+    position:absolute; top:14px; right:18px; background:none; border:none;
+    color:#fff; font-size:24px; cursor:pointer; line-height:1;
+  }
+  .modal-close:hover { color:var(--orange); }
+  #trialForm input {
+    width:100%; padding:12px 14px; margin-bottom:14px; background:#000;
+    border:1px solid #333; border-radius:4px; color:#fff; font-size:14px;
+    font-family:'Oswald',Arial,sans-serif;
+  }
+  #trialForm input:focus { outline:none; border-color:var(--orange); }
+
   @media(max-width:768px){
     nav ul { display:none; }
     section { padding:60px 20px; }
@@ -105,6 +140,7 @@
   </div>
   <ul>
     <li><a href="#programs">Programs</a></li>
+    <li><a href="#free-trial">Free Trial</a></li>
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#about">About</a></li>
@@ -117,7 +153,7 @@
 <section class="hero">
   <h1>PACIFIC BEACH <span>COMMUNITY</span> JIUJITSU</h1>
   <p>Connecting mind, body, and spirit through the art of jiujitsu — for kids, adults, and every belt in between. No experience needed.</p>
-  <a href="#pricing" class="btn">Join Now</a>
+  <button class="btn" onclick="openTrialModal('')">Claim Your Free Trial</button>
 </section>
 
 <!-- PROGRAMS -->
@@ -165,24 +201,45 @@
   </div>
 </section>
 
+<!-- FREE TRIAL -->
+<section id="free-trial" style="background:#050505;">
+  <h2 class="section-title">TRY IT <span>FREE</span></h2>
+  <p class="section-sub">New to jiujitsu or just new to us? Come see what we're about — on the house.</p>
+  <div class="trial-grid">
+
+    <div class="trial-card">
+      <h3>Free Group Class</h3>
+      <p>Drop into any Kids BJJ, Adult BJJ, or No-Gi class on the schedule and train with us — completely free, no strings attached.</p>
+      <button class="btn" onclick="openTrialModal('Free Group Class Trial')">Reserve My Spot</button>
+    </div>
+
+    <div class="trial-card">
+      <h3>Free Private Lesson</h3>
+      <p>Prefer 1-on-1 attention? Book a complimentary private lesson with an instructor to learn the basics at your own pace.</p>
+      <button class="btn btn-outline" onclick="openTrialModal('Free Private Lesson')">Book Free Private Lesson</button>
+    </div>
+
+  </div>
+</section>
+
 <!-- SCHEDULE -->
 <section id="schedule" style="background:#050505;">
   <h2 class="section-title">CLASS <span>SCHEDULE</span></h2>
-  <p class="section-sub">Drop in whenever fits your week — every class welcomes new faces.</p>
+  <p class="section-sub">Drop in whenever fits your week — every class welcomes new faces. Click "Reserve" to grab your free trial spot.</p>
   <table>
     <thead>
-      <tr><th>Day</th><th>Time</th><th>Class</th></tr>
+      <tr><th>Day</th><th>Time</th><th>Class</th><th>Action</th></tr>
     </thead>
     <tbody>
-      <tr><td>Tuesday</td><td>10:00 AM</td><td>Adult BJJ</td></tr>
-      <tr><td>Tuesday</td><td>4:00 PM</td><td>Kids BJJ</td></tr>
-      <tr><td>Tuesday</td><td>7:00 PM</td><td>Adult BJJ</td></tr>
-      <tr><td>Wednesday</td><td>9:30 AM</td><td>No-Gi BJJ</td></tr>
-      <tr><td>Wednesday</td><td>7:00 PM</td><td>No-Gi BJJ</td></tr>
-      <tr><td>Thursday</td><td>10:00 AM</td><td>Adult BJJ</td></tr>
-      <tr><td>Thursday</td><td>4:00 PM</td><td>Kids BJJ</td></tr>
-      <tr><td>Thursday</td><td>7:00 PM</td><td>Adult BJJ</td></tr>
-      <tr><td>Sunday</td><td>11:30 AM</td><td>Women's Self Defense Workshop</td></tr>
+      <tr><td>Tuesday</td><td>10:00 AM</td><td>Adult BJJ</td><td><button class="btn btn-sm" onclick="openTrialModal('Tuesday 10:00 AM - Adult BJJ')">Reserve</button></td></tr>
+      <tr><td>Tuesday</td><td>4:00 PM</td><td>Kids BJJ</td><td><button class="btn btn-sm" onclick="openTrialModal('Tuesday 4:00 PM - Kids BJJ')">Reserve</button></td></tr>
+      <tr><td>Tuesday</td><td>7:00 PM</td><td>Adult BJJ</td><td><button class="btn btn-sm" onclick="openTrialModal('Tuesday 7:00 PM - Adult BJJ')">Reserve</button></td></tr>
+      <tr><td>Wednesday</td><td>9:30 AM</td><td>No-Gi BJJ</td><td><button class="btn btn-sm" onclick="openTrialModal('Wednesday 9:30 AM - No-Gi BJJ')">Reserve</button></td></tr>
+      <tr><td>Wednesday</td><td>7:00 PM</td><td>No-Gi BJJ</td><td><button class="btn btn-sm" onclick="openTrialModal('Wednesday 7:00 PM - No-Gi BJJ')">Reserve</button></td></tr>
+      <tr><td>Thursday</td><td>10:00 AM</td><td>Adult BJJ</td><td><button class="btn btn-sm" onclick="openTrialModal('Thursday 10:00 AM - Adult BJJ')">Reserve</button></td></tr>
+      <tr><td>Thursday</td><td>4:00 PM</td><td>Kids BJJ</td><td><button class="btn btn-sm" onclick="openTrialModal('Thursday 4:00 PM - Kids BJJ')">Reserve</button></td></tr>
+      <tr><td>Thursday</td><td>7:00 PM</td><td>Adult BJJ</td><td><button class="btn btn-sm" onclick="openTrialModal('Thursday 7:00 PM - Adult BJJ')">Reserve</button></td></tr>
+      <tr><td>Sunday</td><td>11:30 AM</td><td>Women's Self Defense Workshop</td><td><button class="btn btn-sm" onclick="openTrialModal('Sunday 11:30 AM - Women\'s Self Defense')">Reserve</button></td></tr>
     </tbody>
   </table>
 </section>
@@ -233,47 +290,4 @@
       <div>
         <h3>Private Lesson Package</h3>
         <div class="amount">$800</div>
-        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Package of 5 private lessons</p>
-      </div>
-      <a class="btn" href="https://buy.stripe.com/eVq4gzaCl6HR86B7cjdZ603" target="_blank">Book Now</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" style="background:#050505;">
-  <h2 class="section-title">MEET YOUR <span>INSTRUCTOR</span></h2>
-  <div class="about-wrap">
-    <img src="IMAGE_INSTRUCTOR_HEADSHOT.jpg" alt="Joe Moreira Jr.">
-    <div class="about-text">
-      <h3>Joe Moreira Jr.</h3>
-      <p><strong>1st Degree Black Belt</strong> under his father, Grandmaster Joe Moreira — a 9th degree red belt, UFC veteran, and pioneer of jiujitsu with an association spanning over 22 countries worldwide.</p>
-      <p>Joe Jr. started training as a young child and has competed in multiple events at the highest level. He teaches using the Moreira Method — a system built on over 400 years of ancestry and development, based on rules and principles rather than a rigid series of techniques.</p>
-      <p>His mission is to make the community a better, more integrated place by introducing an art that connects the body, mind, and spirit — training through diversity, building connections that carry beyond the mats, and helping students love themselves and others more.</p>
-    </div>
-  </div>
-</section>
-
-<!-- LOCATION -->
-<section id="location">
-  <div class="location-wrap">
-    <h2 class="section-title">FIND <span>US</span></h2>
-    <p class="section-sub">4601 Mission Blvd, San Diego, CA 92109</p>
-    <iframe class="map-embed" loading="lazy" src="https://www.google.com/maps?q=4601+Mission+Blvd,+San+Diego,+CA+92109&output=embed"></iframe>
-  </div>
-</section>
-
-<!-- CONTACT / FOOTER -->
-<footer id="contact">
-  <h2 class="section-title" style="margin-bottom:20px;">GET IN <span>TOUCH</span></h2>
-  <p>4601 Mission Blvd, San Diego, CA 92109</p>
-  <p>Email: <a href="mailto:info@pbcommunityjj.com">info@pbcommunityjj.com</a></p>
-  <div class="footer-social">
-    <a href="https://instagram.com/pbcommunityjiujitsu" target="_blank">@pbcommunityjiujitsu</a>
-  </div>
-  <p style="margin-top:25px;color:#555;">&copy; 2026 Pacific Beach Community Jiujitsu. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
+        <p style="color:#aaa
