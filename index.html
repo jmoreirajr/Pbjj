@@ -50,10 +50,45 @@
   .btn {
     padding:14px 32px; border-radius:6px; font-weight:600; font-size:15px;
     letter-spacing:0.5px; cursor:pointer; transition:opacity .2s, transform .15s;
+    display:inline-block;
   }
   .btn:hover { opacity:0.85; transform:translateY(-2px); }
   .btn-primary { background:var(--orange); color:#000; border:none; }
   .btn-secondary { background:transparent; color:#fff; border:2px solid var(--orange); }
+
+  /* Membership Section */
+  .membership {
+    padding:80px 20px; background:#0a0a0a; text-align:center;
+  }
+  .membership h2 {
+    font-size:38px; margin-bottom:10px; color:#fff;
+  }
+  .membership h2 span { color:var(--orange); }
+  .membership p.sub {
+    color:#aaa; margin-bottom:50px; font-size:16px; letter-spacing:0.5px;
+  }
+  .plans {
+    display:flex; flex-wrap:wrap; gap:25px; justify-content:center;
+    max-width:1200px; margin:0 auto;
+  }
+  .plan-card {
+    background:#151515; border:1px solid #262626; border-radius:10px;
+    padding:35px 25px; width:260px; display:flex; flex-direction:column;
+    align-items:center; transition:transform .2s, border-color .2s;
+  }
+  .plan-card:hover { transform:translateY(-5px); border-color:var(--orange); }
+  .plan-card h3 {
+    font-size:20px; margin-bottom:12px; color:#fff; letter-spacing:0.5px;
+  }
+  .plan-card p.desc {
+    color:#999; font-size:13px; margin-bottom:25px; line-height:1.5;
+  }
+  .join-btn {
+    padding:12px 28px; background:var(--orange); color:#000; font-weight:600;
+    border-radius:6px; font-size:14px; letter-spacing:0.5px;
+    transition:opacity .2s, transform .15s; display:inline-block;
+  }
+  .join-btn:hover { opacity:0.85; transform:translateY(-2px); }
 
   footer {
     text-align:center; padding:25px; font-size:13px; color:#777;
@@ -72,7 +107,7 @@
       <li><a href="#">Home</a></li>
       <li><a href="#">Schedule</a></li>
       <li><a href="#">Coaches</a></li>
-      <li><a href="#">Membership</a></li>
+      <li><a href="#membership">Membership</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
   </nav>
@@ -83,8 +118,46 @@
     <h1>PB Jiu-Jitsu <span>Community</span></h1>
     <p class="subtitle">De Brasil · Para o Mundo</p>
     <div class="hero-buttons">
-      <button class="btn btn-primary">Join Now</button>
-      <button class="btn btn-secondary">Schedule</button>
+      <a href="#membership" class="btn btn-primary">Join Now</a>
+      <a href="#" class="btn btn-secondary">Schedule</a>
+    </div>
+  </section>
+
+  <section class="membership" id="membership">
+    <h2>Choose Your <span>Plan</span></h2>
+    <p class="sub">Pick the option that fits your goals — memberships, private lessons, or drop-in classes.</p>
+    <div class="plans">
+
+      <div class="plan-card">
+        <h3>Kids Unlimited</h3>
+        <p class="desc">Unlimited monthly access to all kids classes.</p>
+        <a href="https://buy.stripe.com/5kQ9ATh0J6HR0E968fdZ605" class="join-btn">Join Now</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Adults Unlimited</h3>
+        <p class="desc">Unlimited monthly access to all adult classes.</p>
+        <a href="https://buy.stripe.com/14A00jcKtgir3QleELdZ600" class="join-btn">Join Now</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Private Lesson Package</h3>
+        <p class="desc">5-class package of 1-on-1 private lessons.</p>
+        <a href="https://buy.stripe.com/eVq4gzaCl6HR86B7cjdZ603" class="join-btn">Buy Package</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Private Lesson</h3>
+        <p class="desc">Single 1-on-1 private lesson session.</p>
+        <a href="https://buy.stripe.com/28EcN5fWF2rBdqVbszdZ602" class="join-btn">Book Now</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Drop-In Class</h3>
+        <p class="desc">Try a single class — pick your date &amp; time.</p>
+        <a href="https://book.stripe.com/dRmeVd5i1girfz3cwDdZ601" class="join-btn">Book Now</a>
+      </div>
+
     </div>
   </section>
 
