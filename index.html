@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Pacific Beach Jiu-Jitsu</title>
+<title>PB Jiu-Jitsu Community</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Helvetica Neue',Arial,sans-serif; }
   body { background:#000; color:#fff; }
   a { text-decoration:none; color:inherit; }
 
-  /* NAVBAR */
   nav {
     display:flex;
     justify-content:space-between;
@@ -18,218 +17,86 @@
     background:#000;
     border-bottom:1px solid #222;
   }
-  nav img { height:50px; }
-  nav ul { display:flex; list-style:none; gap:30px; }
-  nav ul li a { color:#fff; font-weight:600; }
-  nav ul li a:hover { color:#F5821F; }
+  nav .logo-wrap { display:flex; align-items:center; gap:12px; }
+  nav .logo-wrap img { height:55px; }
+  nav .logo-wrap span { font-weight:700; font-size:18px; letter-spacing:1px; }
   nav .cta-btn {
     background:#F5821F;
     color:#000;
-    padding:10px 20px;
-    border-radius:6px;
     font-weight:700;
+    padding:10px 24px;
+    border-radius:6px;
+    letter-spacing:1px;
   }
+  nav .cta-btn:hover { background:#ff9a3d; }
 
-  /* HERO */
   .hero {
-    position:relative;
-    height:90vh;
-    background:url('beach-hero.jpg') center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
-  .hero::before {
-    content:'';
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-  }
-  .hero-content { position:relative; z-index:2; }
-  .hero-content h1 {
-    font-size:3rem;
-    margin-bottom:20px;
-  }
-  .hero-content span { color:#F5821F; }
-  .hero-content p {
-    font-size:1.2rem;
-    margin-bottom:30px;
-    color:#ccc;
-  }
-  .hero-btn {
-    background:#F5821F;
-    color:#000;
-    padding:15px 35px;
-    border-radius:6px;
-    font-weight:700;
-    font-size:1.1rem;
-  }
-
-  /* SECTIONS */
-  section { padding:80px 40px; text-align:center; }
-  section h2 {
-    font-size:2.2rem;
-    margin-bottom:20px;
-  }
-  section h2 span { color:#F5821F; }
-  section p { color:#ccc; max-width:700px; margin:0 auto 40px; }
-
-  /* CLASSES GRID */
-  .classes-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-    max-width:1100px;
-    margin:0 auto;
-  }
-  .class-card {
-    background:#111;
-    border:1px solid #222;
-    border-radius:10px;
-    padding:30px;
-    transition:0.3s;
-  }
-  .class-card:hover { border-color:#F5821F; transform:translateY(-5px); }
-  .class-card h3 { color:#F5821F; margin-bottom:10px; }
-  .class-card p { color:#aaa; font-size:0.95rem; }
-
-  /* SCHEDULE */
-  table {
-    width:100%;
-    max-width:900px;
-    margin:0 auto;
-    border-collapse:collapse;
-  }
-  table th, table td {
-    padding:15px;
-    border-bottom:1px solid #222;
-  }
-  table th { color:#F5821F; }
-
-  /* CONTACT */
-  .contact-form {
-    max-width:500px;
-    margin:0 auto;
+    min-height:85vh;
     display:flex;
     flex-direction:column;
-    gap:15px;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+    background:radial-gradient(circle at center, #111 0%, #000 70%);
   }
-  .contact-form input, .contact-form textarea {
-    padding:12px;
-    border-radius:6px;
-    border:1px solid #333;
-    background:#111;
-    color:#fff;
+  .hero img.hero-logo {
+    height:160px;
+    margin-bottom:30px;
   }
-  .contact-form button {
+  .hero h1 {
+    font-size:48px;
+    font-weight:800;
+    letter-spacing:1px;
+    margin-bottom:15px;
+  }
+  .hero p.subtitle {
+    font-size:18px;
+    color:#ccc;
+    letter-spacing:2px;
+    margin-bottom:35px;
+    text-transform:uppercase;
+  }
+  .hero .cta-btn-big {
     background:#F5821F;
     color:#000;
-    padding:14px;
-    border:none;
-    border-radius:6px;
-    font-weight:700;
-    cursor:pointer;
+    font-weight:800;
+    font-size:18px;
+    padding:16px 50px;
+    border-radius:8px;
+    letter-spacing:2px;
+    display:inline-block;
   }
+  .hero .cta-btn-big:hover { background:#ff9a3d; }
 
-  /* FOOTER */
   footer {
-    background:#000;
-    border-top:1px solid #222;
     text-align:center;
-    padding:30px;
-    color:#888;
-    font-size:0.9rem;
-  }
-
-  @media (max-width:768px) {
-    nav ul { display:none; }
-    .hero-content h1 { font-size:2rem; }
+    padding:25px;
+    color:#666;
+    font-size:13px;
+    border-top:1px solid #222;
   }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <a href="#"><img src="logo.png" alt="Pacific Beach Jiu-Jitsu Logo"></a>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#classes">Classes</a></li>
-    <li><a href="#schedule">Schedule</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="cta-btn">Free Trial Class</a>
+  <div class="logo-wrap">
+    <img src="logo.png" alt="PB Jiu-Jitsu Community Logo">
+    <span>PB JIU-JITSU COMMUNITY</span>
+  </div>
+  <a href="#join" class="cta-btn">JOIN NOW</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1>Train Hard. Live <span>Free.</span></h1>
-    <p>Brazilian Jiu-Jitsu for all levels — right by the Pacific Beach shoreline.</p>
-    <a href="#contact" class="hero-btn">Start Your Free Trial</a>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>About <span>Us</span></h2>
-  <p>Pacific Beach Jiu-Jitsu is a community-driven gym built on discipline, respect, and real-world self-defense skills. Whether you're a total beginner or a competitive grappler, our coaches will help you grow on and off the mats.</p>
+<section class="hero">
+  <img src="logo.png" alt="PB Jiu-Jitsu Community Logo" class="hero-logo">
+  <h1>PB Jiu-Jitsu Community</h1>
+  <p class="subtitle">De Brasil · Para o Mundo</p>
+  <a href="#join" id="join" class="cta-btn-big">JOIN NOW</a>
 </section>
 
-<!-- CLASSES -->
-<section id="classes">
-  <h2>Our <span>Classes</span></h2>
-  <div class="classes-grid">
-    <div class="class-card">
-      <h3>Fundamentals</h3>
-      <p>Perfect for beginners. Learn the core techniques and positions of BJJ in a safe, supportive environment.</p>
-    </div>
-    <div class="class-card">
-      <h3>Advanced / Competition</h3>
-      <p>High-intensity live rolling and technique refinement for experienced practitioners and competitors.</p>
-    </div>
-    <div class="class-card">
-      <h3>Kids BJJ</h3>
-      <p>Build confidence, discipline, and fitness for kids ages 5-12 in a fun, structured class.</p>
-    </div>
-    <div class="class-card">
-      <h3>Open Mat</h3>
-      <p>Free-roll sessions to practice techniques and test skills against training partners of all levels.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SCHEDULE -->
-<section id="schedule">
-  <h2>Class <span>Schedule</span></h2>
-  <table>
-    <tr><th>Day</th><th>Morning</th><th>Evening</th></tr>
-    <tr><td>Monday</td><td>6:00 AM - Fundamentals</td><td>7:00 PM - Advanced</td></tr>
-    <tr><td>Tuesday</td><td>6:00 AM - Open Mat</td><td>6:00 PM - Kids BJJ</td></tr>
-    <tr><td>Wednesday</td><td>6:00 AM - Fundamentals</td><td>7:00 PM - Advanced</td></tr>
-    <tr><td>Thursday</td><td>6:00 AM - Open Mat</td><td>6:00 PM - Kids BJJ</td></tr>
-    <tr><td>Friday</td><td>6:00 AM - Fundamentals</td><td>6:00 PM - Open Mat</td></tr>
-    <tr><td>Saturday</td><td>9:00 AM - All Levels</td><td>-</td></tr>
-  </table>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Get In <span>Touch</span></h2>
-  <p>Ready to train? Fill out the form below and we'll get you set up with a free trial class.</p>
-  <form class="contact-form">
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="tel" placeholder="Phone Number">
-    <textarea rows="4" placeholder="Tell us a bit about yourself"></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 Pacific Beach Jiu-Jitsu. All rights reserved.</p>
+  &copy; 2026 PB Jiu-Jitsu Community. All rights reserved.
 </footer>
 
 </body>
