@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pacific Beach Jiu-Jitsu | Free Intro Class</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color:#1a1a1a; line-height:1.6; }
+  a { text-decoration:none; }
+  .btn { display:inline-block; background:#e63946; color:#fff; padding:16px 32px; border-radius:8px; font-weight:bold; font-size:18px; transition:0.2s; }
+  .btn:hover { background:#c1121f; }
+  nav { display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:#0d1b2a; position:sticky; top:0; z-index:10; }
+  nav .logo { color:#fff; font-size:22px; font-weight:bold; }
+  nav ul { display:flex; list-style:none; gap:24px; }
+  nav ul li a { color:#fff; font-weight:500; }
+  .hero { background:linear-gradient(rgba(13,27,42,0.75),rgba(13,27,42,0.75)), url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1600') center/cover; color:#fff; text-align:center; padding:120px 20px; }
+  .hero h1 { font-size:48px; margin-bottom:16px; }
+  .hero p { font-size:20px; margin-bottom:32px; max-width:600px; margin-left:auto; margin-right:auto; }
+  section { padding:80px 40px; max-width:1100px; margin:0 auto; }
+  h2 { font-size:36px; text-align:center; margin-bottom:40px; color:#0d1b2a; }
+  .benefits { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+  .card { background:#f8f9fa; padding:28px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+  .card h3 { margin-bottom:12px; color:#e63946; }
+  .programs { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
+  .program-card { border:2px solid #e9ecef; border-radius:12px; padding:28px; }
+  .program-card h3 { color:#0d1b2a; margin-bottom:10px; }
+  .instructor { display:flex; flex-wrap:wrap; gap:40px; align-items:center; }
+  .instructor img { width:280px; border-radius:12px; }
+  .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
+  .testimonial { background:#0d1b2a; color:#fff; padding:28px; border-radius:12px; }
+  .schedule table { width:100%; border-collapse:collapse; }
+  .schedule th, .schedule td { border:1px solid #dee2e6; padding:14px; text-align:center; }
+  .schedule th { background:#0d1b2a; color:#fff; }
+  .faq-item { border-bottom:1px solid #dee2e6; padding:20px 0; }
+  .faq-item h3 { color:#0d1b2a; margin-bottom:8px; }
+  .cta-final { background:#e63946; color:#fff; text-align:center; padding:80px 20px; }
+  .cta-final h2 { color:#fff; }
+  .cta-final .btn { background:#fff; color:#e63946; }
+  footer { background:#0d1b2a; color:#fff; text-align:center; padding:40px 20px; }
+  form input, form textarea { width:100%; padding:12px; margin-bottom:16px; border-radius:6px; border:1px solid #ccc; font-size:16px; }
+  form { max-width:500px; margin:0 auto; }
+  @media (max-width:768px){ nav ul{display:none;} .hero h1{font-size:32px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🥋 Pacific Beach Jiu-Jitsu</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Learn Real Brazilian Jiu-Jitsu, Right Here in Pacific Beach</h1>
+  <p>Build confidence, get in the best shape of your life, and join a community that has your back — on and off the mats. No experience needed.</p>
+  <a href="#intro" class="btn">Book Your Free Intro Class</a>
+</div>
+
+<!-- ABOUT / BENEFITS -->
+<section id="about">
+  <h2>Why Train With Us</h2>
+  <div class="benefits">
+    <div class="card">
+      <h3>Beginner Friendly</h3>
+      <p>Our Fundamentals program is built for people who have never rolled before. No judgment, just good coaching.</p>
+    </div>
+    <div class="card">
+      <h3>Real Self-Defense</h3>
+      <p>Learn techniques that actually work — practiced and proven in gyms and competitions worldwide.</p>
+    </div>
+    <div class="card">
+      <h3>Total Fitness</h3>
+      <p>Burn 500+ calories a class while building strength, flexibility, and mental toughness.</p>
+    </div>
+    <div class="card">
+      <h3>Community</h3>
+      <p>Train alongside neighbors from Pacific Beach, PB, and all of San Diego. This isn't just a gym — it's a family.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" style="background:#f8f9fa;">
+  <h2>Our Programs</h2>
+  <div class="programs">
+    <div class="program-card">
+      <h3>Fundamentals (Adults)</h3>
+      <p>Perfect for total beginners. Learn the core positions and techniques of BJJ in a supportive, low-pressure environment.</p>
+    </div>
+    <div class="program-card">
+      <h3>All-Levels / Advanced</h3>
+      <p>Sharpen your skills, roll live, and prepare for competition with experienced training partners and coaches.</p>
+    </div>
+    <div class="program-card">
+      <h3>Kids Jiu-Jitsu (Ages 5–12)</h3>
+      <p>Build confidence, discipline, and anti-bullying skills in a fun, structured class designed just for kids.</p>
+    </div>
+    <div class="program-card">
+      <h3>Women's Only Class</h3>
+      <p>A welcoming, judgment-free space for women to learn self-defense and BJJ fundamentals together.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section>
+  <h2>Meet Your Instructor</h2>
+  <div class="instructor">
+    <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=500" alt="Instructor">
+    <div>
+      <h3>Coach [Your Name] — Black Belt, [X] Years Experience</h3>
+      <p style="margin-top:12px;">I started training BJJ because I wanted to feel confident and in control of my body. Years later, it changed my life — and I opened this school to help people right here in Pacific Beach experience that same transformation. Whether you want to lose weight, learn self-defense, or just try something new, I'll personally make sure your first class feels welcoming, not intimidating.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:#f8f9fa;">
+  <h2>What Our Members Say</h2>
+  <div class="testimonials">
+    <div class="testimonial">"I was nervous walking in with zero experience. Six months later I train three times a week and I've never felt stronger." — Sarah M.</div>
+    <div class="testimonial">"My son used to get pushed around at school. Now he's confident, respectful, and loves coming to class." — David R., parent</div>
+    <div class="testimonial">"Best community I've found in Pacific Beach. Everyone genuinely wants you to succeed." — Mike T.</div>
+  </div>
+</section>
+
+<!-- FIRST CLASS -->
+<section id="intro">
+  <h2>What Happens At Your First Class</h2>
+  <div class="benefits">
+    <div class="card"><h3>1. Warm Welcome</h3><p>Arrive 10 minutes early, meet the coach, and get a quick tour of the academy.</p></div>
+    <div class="card"><h3>2. Easy Warm-Up</h3><p>Light movement to get your body ready — no experience or gear required.</p></div>
+    <div class="card"><h3>3. Learn 2–3 Techniques</h3><p>We'll teach you real BJJ moves you can use, broken down step by step.</p></div>
+    <div class="card"><h3>4. Light Practice</h3><p>Practice with a partner at your own pace. Zero pressure to go hard.</p></div>
+  </div>
+  <div style="text-align:center; margin-top:40px;">
+    <a href="#contact" class="btn">Claim Your Free Class Now</a>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" style="background:#f8f9fa;">
+  <h2>Class Schedule</h2>
+  <div class="schedule">
+    <table>
+      <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+      <tr><td>6:00 AM</td><td>All Levels</td><td>-</td><td>All Levels</td><td>-</td><td>All Levels</td><td>-</td></tr>
+      <tr><td>12:00 PM</td><td>Fundamentals</td><td>Fundamentals</td><td>Fundamentals</td><td>Fundamentals</td><td>Fundamentals</td><td>-</td></tr>
+      <tr><td>4:30 PM</td><td>Kids</td><td>Kids</td><td>Kids</td><td>Kids</td><td>-</td><td>-</td></tr>
+      <tr><td>6:00 PM</td><td>Fundamentals</td><td>Women's Only</td><td>Fundamentals</td><td>Women's Only</td><td>Open Mat</td><td>10AM Open Mat</td></tr>
+      <tr><td>7:30 PM</td><td>All Levels</td><td>All Levels</td><td>All Levels</td><td>All Levels</td><td>-</td><td>-</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>Do I need experience to start?</h3><p>Not at all! Most of our members had zero experience before their first class.</p></div>
+  <div class="faq-item"><h3>What should I wear to my first class?</h3><p>Just wear comfortable athletic clothes (like you'd wear to the gym). We'll provide any gear you need.</p></div>
+  <div class="faq-item"><h3>Is BJJ good for kids?</h3><p>Absolutely — it builds discipline, confidence, focus, and real self-defense skills in a safe, structured setting.</p></div>
+  <div class="faq-item"><h3>How much does membership cost?</h3><p>Pricing depends on the plan — contact us and we'll walk you through the best option for your goals.</p></div>
+  <div class="faq-item"><h3>Is there a contract?</h3><p>We offer flexible month-to-month options as well as longer-term plans with discounts.</p></div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-final">
+  <h2>Ready to Try Your First Class — Free?</h2>
+  <p style="margin-bottom:24px; font-size:18px;">Spots are limited each week. Reserve yours below and we'll see you on the mats.</p>
+  <a href="#contact" class="btn">Book My Free Class</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Book Your Free Intro Class</h2>
+  <form>
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <input type="tel" placeholder="Phone Number" required>
+    <textarea rows="4" placeholder="Anything we should know? (optional)"></textarea>
+    <button type="submit" class="btn" style="width:100%; border:none; cursor:pointer;">Reserve My Free Class</button>
+  </form>
+</section>
+
+<footer>
+  <p>🥋 Pacific Beach Jiu-Jitsu | Pacific Beach, San Diego, CA</p>
+  <p style="margin-top:8px;">(858) 555-0123 &nbsp;|&nbsp; info@pacificbeachbjj.com</p>
+</footer>
+
+</body>
+</html>
