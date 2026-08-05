@@ -4,112 +4,95 @@
 <meta charset="UTF-8">
 <title>PB Jiu-Jitsu Community</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Helvetica Neue',Arial,sans-serif; }
+  :root{ --orange:#FF6A00; }
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Oswald',Arial,sans-serif; }
   body { background:#000; color:#fff; }
   a { text-decoration:none; color:inherit; }
 
   nav {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
-    background:#000;
-    border-bottom:1px solid #222;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:15px 40px; background:#000; border-bottom:1px solid #222;
   }
-  nav .logo-wrap { display:flex; align-items:center; gap:12px; }
-  nav .logo-wrap img {
-    height:55px;
-    width:55px;
-    border-radius:50%;
-    object-fit:cover;
-    display:block;
+  .logo-wrap { display:flex; align-items:center; gap:12px; }
+  .logo-wrap img {
+    height:55px; width:55px; border-radius:50%; object-fit:cover; display:block;
   }
-  nav .logo-wrap span { font-weight:700; font-size:16px; letter-spacing:1px; }
+  .logo-wrap span { font-weight:600; font-size:16px; letter-spacing:1px; }
 
-  nav ul { display:flex; list-style:none; gap:30px; }
-  nav ul li a { color:#fff; font-weight:600; font-size:15px; }
-  nav ul li a:hover { color:#F5821F; }
-
-  nav .cta-btn {
-    background:#F5821F;
-    color:#000;
-    padding:10px 22px;
+  .btn {
+    background:var(--orange);
+    color:#fff;
+    padding:12px 28px;
     border-radius:6px;
-    font-weight:700;
-    font-size:14px;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:1px;
+    border:none;
+    cursor:pointer;
+    display:inline-block;
   }
-  nav .cta-btn:hover { background:#ff9c40; }
+  .btn:hover { opacity:0.9; }
 
   .hero {
     min-height:80vh;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     text-align:center;
     padding:40px 20px;
   }
   .hero h1 {
-    font-size:48px;
-    font-weight:800;
-    margin-bottom:12px;
+    font-family:'Anton',sans-serif;
+    font-size:64px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    line-height:1.1;
+    margin-bottom:20px;
   }
   .hero p {
     font-size:18px;
+    letter-spacing:3px;
+    text-transform:uppercase;
     color:#ccc;
-    letter-spacing:2px;
-    margin-bottom:30px;
+    margin-bottom:35px;
   }
-  .hero .join-btn {
-    background:#F5821F;
-    color:#000;
-    padding:16px 40px;
-    border-radius:6px;
-    font-weight:800;
-    font-size:16px;
-    letter-spacing:1px;
-  }
-  .hero .join-btn:hover { background:#ff9c40; }
 
   footer {
     text-align:center;
-    padding:20px;
+    padding:25px;
     font-size:13px;
     color:#777;
     border-top:1px solid #222;
   }
 
-  @media (max-width:768px) {
-    nav ul { display:none; }
-    .hero h1 { font-size:32px; }
+  @media (max-width:600px){
+    .hero h1 { font-size:38px; }
+    nav { padding:15px 20px; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo-wrap">
-    <img src="logo.png" alt="PB Jiu-Jitsu Community Logo">
-    <span>PB JIU-JITSU COMMUNITY</span>
-  </div>
-  <ul>
-    <li><a href="#schedule">Schedule</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#join" class="cta-btn">JOIN NOW</a>
-</nav>
+  <nav>
+    <div class="logo-wrap">
+      <img src="logo.png" alt="PB Jiu-Jitsu Community Logo">
+      <span>PB JIU-JITSU COMMUNITY</span>
+    </div>
+    <a href="#join" class="btn">JOIN NOW</a>
+  </nav>
 
-<section class="hero">
-  <h1>PB Jiu-Jitsu Community</h1>
-  <p>DE BRASIL · PARA O MUNDO</p>
-  <a href="#join" class="join-btn">JOIN NOW</a>
-</section>
+  <section class="hero">
+    <h1>PB Jiu-Jitsu<br>Community</h1>
+    <p>De Brasil · Para o Mundo</p>
+    <a href="#join" class="btn">JOIN NOW</a>
+  </section>
 
-<footer>
-  &copy; 2026 PB Jiu-Jitsu Community. All rights reserved.
-</footer>
+  <footer>
+    &copy; 2026 PB Jiu-Jitsu Community. All rights reserved.
+  </footer>
 
 </body>
 </html>
