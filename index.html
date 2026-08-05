@@ -2,168 +2,278 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PB Jiu-Jitsu Community</title>
+<title>Pacific Beach Community Jiujitsu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{ --orange:#FF6A00; }
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Oswald',Arial,sans-serif; }
-  body { background:#000; color:#fff; }
+  body { background:#000; color:#fff; scroll-behavior:smooth; }
   a { text-decoration:none; color:inherit; }
+  img { max-width:100%; display:block; }
+  h1,h2,h3 { font-family:'Anton',Arial,sans-serif; letter-spacing:1px; }
 
   nav {
     display:flex; justify-content:space-between; align-items:center;
     padding:15px 40px; background:#000; border-bottom:1px solid #222;
+    position:sticky; top:0; z-index:100;
   }
   .logo-wrap { display:flex; align-items:center; gap:12px; }
-  .logo-wrap img {
-    height:55px; width:55px; border-radius:50%; object-fit:cover; display:block;
-  }
-  .logo-wrap span {
-    font-weight:600; font-size:17px; letter-spacing:0.5px; color:#fff;
-  }
-  nav ul { display:flex; gap:35px; list-style:none; }
-  nav ul li a {
-    font-size:14px; font-weight:500; letter-spacing:0.5px; color:#fff;
-    transition:color .2s;
-  }
+  .logo-wrap img { height:55px; width:55px; border-radius:50%; object-fit:cover; }
+  .logo-wrap span { font-weight:600; font-size:17px; letter-spacing:0.5px; }
+  nav ul { display:flex; gap:30px; list-style:none; }
+  nav ul li a { font-size:14px; font-weight:500; text-transform:uppercase; }
   nav ul li a:hover { color:var(--orange); }
 
-  .tagline {
-    text-align:center; padding:10px 0; font-size:13px;
-    letter-spacing:2px; color:#aaa; border-bottom:1px solid #222;
-  }
-  .tagline span { color:var(--orange); }
-
   .hero {
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; padding:100px 20px 120px; background:#000;
+    min-height:80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; padding:60px 20px;
+    background:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url('IMAGE_HERO_BACKGROUND.jpg') center/cover;
   }
-  .hero h1 {
-    font-size:56px; font-weight:700; margin-bottom:10px; color:#fff;
-  }
+  .hero h1 { font-size:clamp(36px,7vw,72px); color:#fff; margin-bottom:15px; }
   .hero h1 span { color:var(--orange); }
-  .hero p.subtitle {
-    font-size:20px; color:#ccc; margin-bottom:35px; letter-spacing:1px;
-  }
-  .hero-buttons { display:flex; gap:20px; }
+  .hero p { font-size:18px; max-width:600px; margin-bottom:30px; color:#ddd; }
   .btn {
-    padding:14px 32px; border-radius:6px; font-weight:600; font-size:15px;
-    letter-spacing:0.5px; cursor:pointer; transition:opacity .2s, transform .15s;
-    display:inline-block;
+    display:inline-block; background:var(--orange); color:#fff; font-weight:600;
+    padding:14px 34px; border-radius:4px; text-transform:uppercase; font-size:14px;
+    letter-spacing:1px; transition:0.2s;
   }
-  .btn:hover { opacity:0.85; transform:translateY(-2px); }
-  .btn-primary { background:var(--orange); color:#000; border:none; }
-  .btn-secondary { background:transparent; color:#fff; border:2px solid var(--orange); }
+  .btn:hover { background:#e35d00; }
 
-  /* Membership Section */
-  .membership {
-    padding:80px 20px; background:#0a0a0a; text-align:center;
-  }
-  .membership h2 {
-    font-size:38px; margin-bottom:10px; color:#fff;
-  }
-  .membership h2 span { color:var(--orange); }
-  .membership p.sub {
-    color:#aaa; margin-bottom:50px; font-size:16px; letter-spacing:0.5px;
-  }
-  .plans {
-    display:flex; flex-wrap:wrap; gap:25px; justify-content:center;
-    max-width:1200px; margin:0 auto;
-  }
-  .plan-card {
-    background:#151515; border:1px solid #262626; border-radius:10px;
-    padding:35px 25px; width:260px; display:flex; flex-direction:column;
-    align-items:center; transition:transform .2s, border-color .2s;
-  }
-  .plan-card:hover { transform:translateY(-5px); border-color:var(--orange); }
-  .plan-card h3 {
-    font-size:20px; margin-bottom:12px; color:#fff; letter-spacing:0.5px;
-  }
-  .plan-card p.desc {
-    color:#999; font-size:13px; margin-bottom:25px; line-height:1.5;
-  }
-  .join-btn {
-    padding:12px 28px; background:var(--orange); color:#000; font-weight:600;
-    border-radius:6px; font-size:14px; letter-spacing:0.5px;
-    transition:opacity .2s, transform .15s; display:inline-block;
-  }
-  .join-btn:hover { opacity:0.85; transform:translateY(-2px); }
+  section { padding:80px 40px; }
+  .section-title { text-align:center; font-size:clamp(28px,5vw,44px); margin-bottom:10px; }
+  .section-title span { color:var(--orange); }
+  .section-sub { text-align:center; color:#aaa; max-width:600px; margin:0 auto 50px; }
 
-  footer {
-    text-align:center; padding:25px; font-size:13px; color:#777;
-    border-top:1px solid #222;
+  /* PROGRAMS */
+  .programs-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px; max-width:1200px; margin:0 auto; }
+  .program-card { background:#111; border:1px solid #222; border-radius:8px; overflow:hidden; }
+  .program-card img { height:200px; width:100%; object-fit:cover; background:#222; }
+  .program-card .content { padding:22px; }
+  .program-card h3 { color:var(--orange); font-size:20px; margin-bottom:10px; }
+  .program-card p { font-size:14px; color:#ccc; line-height:1.6; margin-bottom:8px; }
+  .program-card .age { font-size:12px; color:#888; text-transform:uppercase; letter-spacing:0.5px; }
+
+  /* SCHEDULE */
+  table { width:100%; max-width:900px; margin:0 auto; border-collapse:collapse; }
+  th, td { padding:14px 16px; text-align:left; border-bottom:1px solid #222; font-size:14px; }
+  th { background:#111; color:var(--orange); text-transform:uppercase; letter-spacing:0.5px; }
+  tr:hover td { background:#0d0d0d; }
+
+  /* PRICING */
+  .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; max-width:1300px; margin:0 auto; }
+  .price-card {
+    background:#111; border:1px solid #222; border-radius:8px; padding:35px 25px;
+    text-align:center; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .price-card:hover { border-color:var(--orange); }
+  .price-card h3 { font-size:18px; margin-bottom:15px; text-transform:uppercase; }
+  .price-card .amount { font-size:40px; font-family:'Anton',Arial,sans-serif; color:var(--orange); margin-bottom:20px; }
+  .price-card .amount sup { font-size:16px; }
+  .price-card .amount sub { font-size:13px; color:#888; font-family:'Oswald'; }
+  .price-card .btn { margin-top:10px; }
+
+  /* ABOUT */
+  .about-wrap { display:flex; gap:50px; max-width:1100px; margin:0 auto; align-items:center; flex-wrap:wrap; }
+  .about-wrap img { flex:1 1 300px; border-radius:8px; object-fit:cover; height:400px; background:#222; }
+  .about-text { flex:1 1 400px; }
+  .about-text h3 { color:var(--orange); font-size:26px; margin-bottom:15px; }
+  .about-text p { color:#ccc; line-height:1.8; margin-bottom:15px; font-size:15px; }
+
+  /* LOCATION */
+  .location-wrap { max-width:1000px; margin:0 auto; text-align:center; }
+  .map-embed { width:100%; height:400px; border:0; border-radius:8px; margin-top:30px; }
+
+  /* CONTACT / FOOTER */
+  footer { background:#0a0a0a; padding:50px 40px; text-align:center; border-top:1px solid #222; }
+  footer p { color:#888; font-size:14px; margin:6px 0; }
+  footer a { color:var(--orange); }
+  .footer-social { margin-top:15px; }
+
+  @media(max-width:768px){
+    nav ul { display:none; }
+    section { padding:60px 20px; }
   }
 </style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo-wrap">
-      <img src="logo.png" alt="PB Jiu-Jitsu Community Logo">
-      <span>PB Jiu-Jitsu Community</span>
+<nav>
+  <div class="logo-wrap">
+    <img src="IMAGE_LOGO.jpg" alt="PB Community Jiujitsu Logo">
+    <span>PB COMMUNITY JIUJITSU</span>
+  </div>
+  <ul>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>PACIFIC BEACH <span>COMMUNITY</span> JIUJITSU</h1>
+  <p>Connecting mind, body, and spirit through the art of jiujitsu — for kids, adults, and every belt in between. No experience needed.</p>
+  <a href="#pricing" class="btn">Join Now</a>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <h2 class="section-title">OUR <span>PROGRAMS</span></h2>
+  <p class="section-sub">Four programs, one community. Whatever your goal, there's a class built for you.</p>
+  <div class="programs-grid">
+
+    <div class="program-card">
+      <img src="IMAGE_KIDS_CLASS.jpg" alt="Kids BJJ class">
+      <div class="content">
+        <h3>Kids BJJ</h3>
+        <p>Focused on structural development of confidence, discipline, and technical ability — helping kids stay safe and healthy in all aspects of life.</p>
+        <span class="age">Ages 4–13</span>
+      </div>
     </div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Schedule</a></li>
-      <li><a href="#">Coaches</a></li>
-      <li><a href="#membership">Membership</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
 
-  <div class="tagline">PACIFIC BEACH <span>·</span> SAN DIEGO</div>
-
-  <section class="hero">
-    <h1>PB Jiu-Jitsu <span>Community</span></h1>
-    <p class="subtitle">De Brasil · Para o Mundo</p>
-    <div class="hero-buttons">
-      <a href="#membership" class="btn btn-primary">Join Now</a>
-      <a href="#" class="btn btn-secondary">Schedule</a>
+    <div class="program-card">
+      <img src="IMAGE_ADULT_GI_CLASS.jpg" alt="Adult BJJ class">
+      <div class="content">
+        <h3>Adult BJJ (Gi)</h3>
+        <p>Kimono-based class focused on the fundamentals and principles of jiujitsu — the true heart of our sport. No experience needed. Connect the mind and body and learn to play human chess.</p>
+        <span class="age">All Levels · No Experience Needed</span>
+      </div>
     </div>
-  </section>
 
-  <section class="membership" id="membership">
-    <h2>Choose Your <span>Plan</span></h2>
-    <p class="sub">Pick the option that fits your goals — memberships, private lessons, or drop-in classes.</p>
-    <div class="plans">
+    <div class="program-card">
+      <img src="IMAGE_NOGI_CLASS.jpg" alt="No-Gi BJJ class">
+      <div class="content">
+        <h3>No-Gi BJJ</h3>
+        <p>Same fundamentals as our Adult BJJ class, without the gi. More dynamic and less technical than the kimono class. No experience needed.</p>
+        <span class="age">No Age Limit</span>
+      </div>
+    </div>
 
-      <div class="plan-card">
+    <div class="program-card">
+      <img src="IMAGE_WOMENS_SELFDEFENSE.jpg" alt="Women's Self Defense class">
+      <div class="content">
+        <h3>Women's Self Defense</h3>
+        <p>Street self-defense workshop covering body language awareness and jiujitsu techniques to help keep women safe in all aspects of life. Women only.</p>
+        <span class="age">No Age Required</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" style="background:#050505;">
+  <h2 class="section-title">CLASS <span>SCHEDULE</span></h2>
+  <p class="section-sub">Drop in whenever fits your week — every class welcomes new faces.</p>
+  <table>
+    <thead>
+      <tr><th>Day</th><th>Time</th><th>Class</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tuesday</td><td>10:00 AM</td><td>Adult BJJ</td></tr>
+      <tr><td>Tuesday</td><td>4:00 PM</td><td>Kids BJJ</td></tr>
+      <tr><td>Tuesday</td><td>7:00 PM</td><td>Adult BJJ</td></tr>
+      <tr><td>Wednesday</td><td>9:30 AM</td><td>No-Gi BJJ</td></tr>
+      <tr><td>Wednesday</td><td>7:00 PM</td><td>No-Gi BJJ</td></tr>
+      <tr><td>Thursday</td><td>10:00 AM</td><td>Adult BJJ</td></tr>
+      <tr><td>Thursday</td><td>4:00 PM</td><td>Kids BJJ</td></tr>
+      <tr><td>Thursday</td><td>7:00 PM</td><td>Adult BJJ</td></tr>
+      <tr><td>Sunday</td><td>11:30 AM</td><td>Women's Self Defense Workshop</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <h2 class="section-title">MEMBERSHIP & <span>PRICING</span></h2>
+  <p class="section-sub">Pick the plan that fits you — cancel or switch anytime.</p>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <div>
         <h3>Kids Unlimited</h3>
-        <p class="desc">Unlimited monthly access to all kids classes.</p>
-        <a href="https://buy.stripe.com/5kQ9ATh0J6HR0E968fdZ605" class="join-btn">Join Now</a>
+        <div class="amount">$120<sub>/mo</sub></div>
+        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Unlimited Kids BJJ classes</p>
       </div>
-
-      <div class="plan-card">
-        <h3>Adults Unlimited</h3>
-        <p class="desc">Unlimited monthly access to all adult classes.</p>
-        <a href="https://buy.stripe.com/14A00jcKtgir3QleELdZ600" class="join-btn">Join Now</a>
-      </div>
-
-      <div class="plan-card">
-        <h3>Private Lesson Package</h3>
-        <p class="desc">5-class package of 1-on-1 private lessons.</p>
-        <a href="https://buy.stripe.com/eVq4gzaCl6HR86B7cjdZ603" class="join-btn">Buy Package</a>
-      </div>
-
-      <div class="plan-card">
-        <h3>Private Lesson</h3>
-        <p class="desc">Single 1-on-1 private lesson session.</p>
-        <a href="https://buy.stripe.com/28EcN5fWF2rBdqVbszdZ602" class="join-btn">Book Now</a>
-      </div>
-
-      <div class="plan-card">
-        <h3>Drop-In Class</h3>
-        <p class="desc">Try a single class — pick your date &amp; time.</p>
-        <a href="https://book.stripe.com/dRmeVd5i1girfz3cwDdZ601" class="join-btn">Book Now</a>
-      </div>
-
+      <a class="btn" href="https://buy.stripe.com/5kQ9ATh0J6HR0E968fdZ605" target="_blank">Join Now</a>
     </div>
-  </section>
 
-  <footer>
-    &copy; 2026 PB Jiu-Jitsu Community. All rights reserved.
-  </footer>
+    <div class="price-card">
+      <div>
+        <h3>Adults Unlimited</h3>
+        <div class="amount">$150<sub>/mo</sub></div>
+        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Unlimited Adult BJJ & No-Gi classes</p>
+      </div>
+      <a class="btn" href="https://buy.stripe.com/14A00jcKtgir3QleELdZ600" target="_blank">Join Now</a>
+    </div>
+
+    <div class="price-card">
+      <div>
+        <h3>Drop-In Class</h3>
+        <div class="amount">$35</div>
+        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Single class, any program</p>
+      </div>
+      <a class="btn" href="https://book.stripe.com/dRmeVd5i1girfz3cwDdZ601" target="_blank">Book Now</a>
+    </div>
+
+    <div class="price-card">
+      <div>
+        <h3>Private Lesson</h3>
+        <div class="amount">$200</div>
+        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">One-on-one private session</p>
+      </div>
+      <a class="btn" href="https://buy.stripe.com/28EcN5fWF2rBdqVbszdZ602" target="_blank">Book Now</a>
+    </div>
+
+    <div class="price-card">
+      <div>
+        <h3>Private Lesson Package</h3>
+        <div class="amount">$800</div>
+        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Package of 5 private lessons</p>
+      </div>
+      <a class="btn" href="https://buy.stripe.com/eVq4gzaCl6HR86B7cjdZ603" target="_blank">Book Now</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:#050505;">
+  <h2 class="section-title">MEET YOUR <span>INSTRUCTOR</span></h2>
+  <div class="about-wrap">
+    <img src="IMAGE_INSTRUCTOR_HEADSHOT.jpg" alt="Joe Moreira Jr.">
+    <div class="about-text">
+      <h3>Joe Moreira Jr.</h3>
+      <p><strong>1st Degree Black Belt</strong> under his father, Grandmaster Joe Moreira — a 9th degree red belt, UFC veteran, and pioneer of jiujitsu with an association spanning over 22 countries worldwide.</p>
+      <p>Joe Jr. started training as a young child and has competed in multiple events at the highest level. He teaches using the Moreira Method — a system built on over 400 years of ancestry and development, based on rules and principles rather than a rigid series of techniques.</p>
+      <p>His mission is to make the community a better, more integrated place by introducing an art that connects the body, mind, and spirit — training through diversity, building connections that carry beyond the mats, and helping students love themselves and others more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="location-wrap">
+    <h2 class="section-title">FIND <span>US</span></h2>
+    <p class="section-sub">4601 Mission Blvd, San Diego, CA 92109</p>
+    <iframe class="map-embed" loading="lazy" src="https://www.google.com/maps?q=4601+Mission+Blvd,+San+Diego,+CA+92109&output=embed"></iframe>
+  </div>
+</section>
+
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
+  <h2 class="section-title" style="margin-bottom:20px;">GET IN <span>TOUCH</span></h2>
+  <p>4601 Mission Blvd, San Diego, CA 92109</p>
+  <p>Email: <a href="mailto:info@pbcommunityjj.com">info@pbcommunityjj.com</a></p>
+  <div class="footer-social">
+    <a href="https://instagram.com/pbcommunityjiujitsu" target="_blank">@pbcommunityjiujitsu</a>
+  </div>
+  <p style="margin-top:25px;color:#555;">&copy; 2026 Pacific Beach Community Jiujitsu. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
