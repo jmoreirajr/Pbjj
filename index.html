@@ -4,95 +4,186 @@
 <meta charset="UTF-8">
 <title>Pacific Beach Community Jiujitsu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Pacific Beach Community Jiujitsu — BJJ classes for kids and adults, no-gi, and women's self defense in San Diego, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{ --orange:#FF6A00; }
+  :root{
+    --orange:#FF6A00;
+    --orange-dark:#e35d00;
+    --bg:#0a0a0a;
+    --bg-alt:#050505;
+    --card:#111214;
+    --border:#1f2023;
+    --text-dim:#9a9a9a;
+    --radius:14px;
+  }
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Oswald',Arial,sans-serif; }
-  body { background:#000; color:#fff; scroll-behavior:smooth; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:#fff; overflow-x:hidden; padding-bottom:0; }
   a { text-decoration:none; color:inherit; }
   img { max-width:100%; display:block; }
-  h1,h2,h3 { font-family:'Anton',Arial,sans-serif; letter-spacing:1px; }
+  ul { list-style:none; }
+  h1,h2,h3 { font-family:'Anton',Arial,sans-serif; letter-spacing:0.5px; line-height:1.1; }
 
+  /* ===== NAV ===== */
   nav {
     display:flex; justify-content:space-between; align-items:center;
-    padding:15px 40px; background:#000; border-bottom:1px solid #222;
-    position:sticky; top:0; z-index:100;
+    padding:14px 40px; background:rgba(0,0,0,0.75); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    position:sticky; top:0; z-index:200;
   }
   .logo-wrap { display:flex; align-items:center; gap:12px; }
-  .logo-wrap img { height:55px; width:55px; border-radius:50%; object-fit:cover; }
-  .logo-wrap span { font-weight:600; font-size:17px; letter-spacing:0.5px; }
-  nav ul { display:flex; gap:30px; list-style:none; }
-  nav ul li a { font-size:14px; font-weight:500; text-transform:uppercase; }
-  nav ul li a:hover { color:var(--orange); }
-
-  .hero {
-    min-height:80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
-    text-align:center; padding:60px 20px;
-    background:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url('IMAGE_HERO_BACKGROUND.jpg') center/cover;
+  .logo-wrap img { height:50px; width:50px; border-radius:50%; object-fit:cover; border:2px solid var(--orange); }
+  .logo-wrap span { font-weight:600; font-size:16px; letter-spacing:0.5px; }
+  .nav-links { display:flex; gap:28px; }
+  .nav-links a { font-size:13px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px; position:relative; padding:4px 0; transition:0.2s; }
+  .nav-links a:hover { color:var(--orange); }
+  .nav-cta { display:none; }
+  .nav-cta a {
+    background:var(--orange); color:#fff; font-weight:600; font-size:12px;
+    text-transform:uppercase; letter-spacing:0.5px; padding:10px 20px; border-radius:6px; transition:0.2s;
   }
-  .hero h1 { font-size:clamp(36px,7vw,72px); color:#fff; margin-bottom:15px; }
+  .nav-cta a:hover { background:var(--orange-dark); }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:6px; }
+  .hamburger span { width:24px; height:2px; background:#fff; border-radius:2px; transition:0.25s; }
+
+  .mobile-menu {
+    display:none; flex-direction:column; position:fixed; top:0; right:0; height:100vh; width:78%; max-width:320px;
+    background:#0d0d0d; border-left:1px solid var(--border); padding:90px 30px 30px; gap:26px;
+    transform:translateX(100%); transition:transform 0.3s ease; z-index:190;
+  }
+  .mobile-menu.open { transform:translateX(0); }
+  .mobile-menu a { font-size:16px; text-transform:uppercase; letter-spacing:0.5px; font-weight:500; }
+  .mobile-menu .btn { width:fit-content; margin-top:10px; }
+  .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:180; }
+  .overlay.open { display:block; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height:88vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; padding:80px 20px;
+    background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.85)), url('IMAGE_HERO_BACKGROUND.jpg') center/cover;
+    position:relative;
+  }
+  .hero-badge {
+    display:inline-block; border:1px solid var(--orange); color:var(--orange); font-size:12px;
+    letter-spacing:1.5px; text-transform:uppercase; padding:6px 16px; border-radius:30px; margin-bottom:22px;
+  }
+  .hero h1 { font-size:clamp(34px,7vw,68px); color:#fff; margin-bottom:16px; }
   .hero h1 span { color:var(--orange); }
-  .hero p { font-size:18px; max-width:600px; margin-bottom:30px; color:#ddd; }
+  .hero p { font-size:clamp(15px,2vw,18px); max-width:600px; margin:0 auto 34px; color:#ccc; line-height:1.6; }
+  .hero-btns { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+
   .btn {
     display:inline-block; background:var(--orange); color:#fff; font-weight:600;
-    padding:14px 34px; border-radius:4px; text-transform:uppercase; font-size:14px;
+    padding:15px 34px; border-radius:6px; text-transform:uppercase; font-size:13px;
+    letter-spacing:1px; transition:0.2s; border:none; cursor:pointer;
+  }
+  .btn:hover { background:var(--orange-dark); transform:translateY(-1px); }
+  .btn-outline {
+    display:inline-block; background:transparent; border:1px solid #444; color:#fff; font-weight:600;
+    padding:15px 34px; border-radius:6px; text-transform:uppercase; font-size:13px;
     letter-spacing:1px; transition:0.2s;
   }
-  .btn:hover { background:#e35d00; }
+  .btn-outline:hover { border-color:var(--orange); color:var(--orange); }
 
-  section { padding:80px 40px; }
-  .section-title { text-align:center; font-size:clamp(28px,5vw,44px); margin-bottom:10px; }
-  .section-title span { color:var(--orange); }
-  .section-sub { text-align:center; color:#aaa; max-width:600px; margin:0 auto 50px; }
-
-  /* PROGRAMS */
-  .programs-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px; max-width:1200px; margin:0 auto; }
-  .program-card { background:#111; border:1px solid #222; border-radius:8px; overflow:hidden; }
-  .program-card img { height:200px; width:100%; object-fit:cover; background:#222; }
-  .program-card .content { padding:22px; }
-  .program-card h3 { color:var(--orange); font-size:20px; margin-bottom:10px; }
-  .program-card p { font-size:14px; color:#ccc; line-height:1.6; margin-bottom:8px; }
-  .program-card .age { font-size:12px; color:#888; text-transform:uppercase; letter-spacing:0.5px; }
-
-  /* SCHEDULE */
-  table { width:100%; max-width:900px; margin:0 auto; border-collapse:collapse; }
-  th, td { padding:14px 16px; text-align:left; border-bottom:1px solid #222; font-size:14px; }
-  th { background:#111; color:var(--orange); text-transform:uppercase; letter-spacing:0.5px; }
-  tr:hover td { background:#0d0d0d; }
-
-  /* PRICING */
-  .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; max-width:1300px; margin:0 auto; }
-  .price-card {
-    background:#111; border:1px solid #222; border-radius:8px; padding:35px 25px;
-    text-align:center; display:flex; flex-direction:column; justify-content:space-between;
+  section { padding:100px 40px; }
+  .section-eyebrow {
+    display:block; text-align:center; color:var(--orange); font-size:12px; letter-spacing:2px;
+    text-transform:uppercase; font-weight:600; margin-bottom:12px;
   }
-  .price-card:hover { border-color:var(--orange); }
-  .price-card h3 { font-size:18px; margin-bottom:15px; text-transform:uppercase; }
-  .price-card .amount { font-size:40px; font-family:'Anton',Arial,sans-serif; color:var(--orange); margin-bottom:20px; }
-  .price-card .amount sup { font-size:16px; }
+  .section-title { text-align:center; font-size:clamp(28px,5vw,46px); margin-bottom:14px; }
+  .section-title span { color:var(--orange); }
+  .section-sub { text-align:center; color:var(--text-dim); max-width:600px; margin:0 auto 60px; font-size:15px; line-height:1.6; }
+
+  /* ===== PROGRAMS ===== */
+  .programs-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:26px; max-width:1200px; margin:0 auto; }
+  .program-card {
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
+    transition:0.25s; display:flex; flex-direction:column;
+  }
+  .program-card:hover { border-color:var(--orange); transform:translateY(-4px); }
+  .program-card img { height:210px; width:100%; object-fit:cover; background:#1a1a1a; }
+  .program-card .content { padding:24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .program-card h3 { color:#fff; font-size:19px; }
+  .program-card p { font-size:14px; color:#bbb; line-height:1.65; flex:1; }
+  .program-card .age {
+    font-size:11px; color:var(--orange); text-transform:uppercase; letter-spacing:0.8px;
+    font-weight:600; border-top:1px solid var(--border); padding-top:12px; margin-top:auto;
+  }
+
+  /* ===== SCHEDULE ===== */
+  .schedule-wrap { max-width:900px; margin:0 auto; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { padding:16px 20px; text-align:left; border-bottom:1px solid var(--border); font-size:14px; }
+  th { background:#161618; color:var(--orange); text-transform:uppercase; letter-spacing:0.5px; font-size:12px; }
+  tbody tr:hover { background:#161618; }
+  tbody tr:last-child td { border-bottom:none; }
+  td:first-child { font-weight:600; }
+
+  /* ===== PRICING ===== */
+  .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; max-width:1300px; margin:0 auto; }
+  .price-card {
+    position:relative; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:36px 26px;
+    text-align:center; display:flex; flex-direction:column; justify-content:space-between; transition:0.25s;
+  }
+  .price-card:hover { border-color:var(--orange); transform:translateY(-4px); }
+  .price-card.popular { border-color:var(--orange); box-shadow:0 0 0 1px var(--orange); }
+  .popular-badge {
+    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    background:var(--orange); color:#fff; font-size:10px; font-weight:700; text-transform:uppercase;
+    letter-spacing:1px; padding:5px 14px; border-radius:20px;
+  }
+  .price-card h3 { font-size:16px; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.5px; }
+  .price-card .amount { font-size:42px; font-family:'Anton',Arial,sans-serif; color:var(--orange); margin-bottom:12px; }
   .price-card .amount sub { font-size:13px; color:#888; font-family:'Oswald'; }
-  .price-card .btn { margin-top:10px; }
+  .price-card .desc { color:#aaa; font-size:13px; margin-bottom:24px; line-height:1.5; }
+  .price-card .btn { width:100%; }
 
-  /* ABOUT */
-  .about-wrap { display:flex; gap:50px; max-width:1100px; margin:0 auto; align-items:center; flex-wrap:wrap; }
-  .about-wrap img { flex:1 1 300px; border-radius:8px; object-fit:cover; height:400px; background:#222; }
+  /* ===== ABOUT ===== */
+  .about-wrap { display:flex; gap:60px; max-width:1100px; margin:0 auto; align-items:center; flex-wrap:wrap; }
+  .about-wrap img { flex:1 1 300px; border-radius:var(--radius); object-fit:cover; height:420px; background:#1a1a1a; border:1px solid var(--border); }
   .about-text { flex:1 1 400px; }
-  .about-text h3 { color:var(--orange); font-size:26px; margin-bottom:15px; }
-  .about-text p { color:#ccc; line-height:1.8; margin-bottom:15px; font-size:15px; }
+  .about-text .section-eyebrow { text-align:left; }
+  .about-text h3 { color:#fff; font-size:28px; margin-bottom:18px; }
+  .about-text h3 span { color:var(--orange); }
+  .about-text p { color:#bbb; line-height:1.8; margin-bottom:16px; font-size:15px; }
+  .about-text strong { color:#fff; }
 
-  /* LOCATION */
+  /* ===== LOCATION ===== */
   .location-wrap { max-width:1000px; margin:0 auto; text-align:center; }
-  .map-embed { width:100%; height:400px; border:0; border-radius:8px; margin-top:30px; }
+  .map-embed { width:100%; height:400px; border:0; border-radius:var(--radius); margin-top:34px; filter:grayscale(0.2) contrast(1.1); }
 
-  /* CONTACT / FOOTER */
-  footer { background:#0a0a0a; padding:50px 40px; text-align:center; border-top:1px solid #222; }
-  footer p { color:#888; font-size:14px; margin:6px 0; }
-  footer a { color:var(--orange); }
-  .footer-social { margin-top:15px; }
+  /* ===== FOOTER ===== */
+  footer { background:var(--bg-alt); padding:70px 40px 110px; border-top:1px solid var(--border); }
+  .footer-grid { max-width:1000px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; text-align:left; }
+  .footer-col h4 { color:#fff; font-size:15px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:14px; }
+  .footer-col p, .footer-col a { color:#999; font-size:14px; display:block; margin-bottom:8px; }
+  .footer-col a:hover { color:var(--orange); }
+  .footer-bottom { text-align:center; color:#555; font-size:13px; margin-top:50px; padding-top:24px; border-top:1px solid var(--border); }
 
+  /* ===== MOBILE STICKY CTA ===== */
+  .mobile-cta {
+    display:none; position:fixed; bottom:0; left:0; width:100%; z-index:150;
+    background:#0d0d0d; border-top:1px solid var(--border); padding:12px 20px;
+    justify-content:center; gap:12px;
+  }
+  .mobile-cta a { flex:1; text-align:center; }
+  .mobile-cta .btn, .mobile-cta .btn-outline { width:100%; padding:13px 0; font-size:12px; }
+
+  @media(max-width:900px){
+    .nav-links, .nav-cta { display:none; }
+    .hamburger { display:flex; }
+    .mobile-menu { display:flex; }
+  }
   @media(max-width:768px){
-    nav ul { display:none; }
-    section { padding:60px 20px; }
+    section { padding:70px 20px; }
+    .about-wrap { gap:34px; }
+    .about-wrap img { height:300px; }
+    body { padding-bottom:70px; }
+    .mobile-cta { display:flex; }
+    footer { padding-bottom:120px; }
   }
 </style>
 </head>
@@ -103,7 +194,7 @@
     <img src="IMAGE_LOGO.jpg" alt="PB Community Jiujitsu Logo">
     <span>PB COMMUNITY JIUJITSU</span>
   </div>
-  <ul>
+  <ul class="nav-links">
     <li><a href="#programs">Programs</a></li>
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#pricing">Pricing</a></li>
@@ -111,17 +202,37 @@
     <li><a href="#location">Location</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-cta"><a href="#pricing">Join Now</a></div>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="overlay" id="overlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#programs">Programs</a>
+  <a href="#schedule">Schedule</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#about">About</a>
+  <a href="#location">Location</a>
+  <a href="#contact">Contact</a>
+  <a href="#pricing" class="btn">Join Now</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
+  <span class="hero-badge">San Diego, CA</span>
   <h1>PACIFIC BEACH <span>COMMUNITY</span> JIUJITSU</h1>
   <p>Connecting mind, body, and spirit through the art of jiujitsu — for kids, adults, and every belt in between. No experience needed.</p>
-  <a href="#pricing" class="btn">Join Now</a>
+  <div class="hero-btns">
+    <a href="#pricing" class="btn">Join Now</a>
+    <a href="#schedule" class="btn-outline">View Schedule</a>
+  </div>
 </section>
 
 <!-- PROGRAMS -->
 <section id="programs">
+  <span class="section-eyebrow">What We Offer</span>
   <h2 class="section-title">OUR <span>PROGRAMS</span></h2>
   <p class="section-sub">Four programs, one community. Whatever your goal, there's a class built for you.</p>
   <div class="programs-grid">
@@ -166,29 +277,33 @@
 </section>
 
 <!-- SCHEDULE -->
-<section id="schedule" style="background:#050505;">
+<section id="schedule" style="background:var(--bg-alt);">
+  <span class="section-eyebrow">Weekly Classes</span>
   <h2 class="section-title">CLASS <span>SCHEDULE</span></h2>
   <p class="section-sub">Drop in whenever fits your week — every class welcomes new faces.</p>
-  <table>
-    <thead>
-      <tr><th>Day</th><th>Time</th><th>Class</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Tuesday</td><td>10:00 AM</td><td>Adult BJJ</td></tr>
-      <tr><td>Tuesday</td><td>4:00 PM</td><td>Kids BJJ</td></tr>
-      <tr><td>Tuesday</td><td>7:00 PM</td><td>Adult BJJ</td></tr>
-      <tr><td>Wednesday</td><td>9:30 AM</td><td>No-Gi BJJ</td></tr>
-      <tr><td>Wednesday</td><td>7:00 PM</td><td>No-Gi BJJ</td></tr>
-      <tr><td>Thursday</td><td>10:00 AM</td><td>Adult BJJ</td></tr>
-      <tr><td>Thursday</td><td>4:00 PM</td><td>Kids BJJ</td></tr>
-      <tr><td>Thursday</td><td>7:00 PM</td><td>Adult BJJ</td></tr>
-      <tr><td>Sunday</td><td>11:30 AM</td><td>Women's Self Defense Workshop</td></tr>
-    </tbody>
-  </table>
+  <div class="schedule-wrap">
+    <table>
+      <thead>
+        <tr><th>Day</th><th>Time</th><th>Class</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Tuesday</td><td>10:00 AM</td><td>Adult BJJ</td></tr>
+        <tr><td>Tuesday</td><td>4:00 PM</td><td>Kids BJJ</td></tr>
+        <tr><td>Tuesday</td><td>7:00 PM</td><td>Adult BJJ</td></tr>
+        <tr><td>Wednesday</td><td>9:30 AM</td><td>No-Gi BJJ</td></tr>
+        <tr><td>Wednesday</td><td>7:00 PM</td><td>No-Gi BJJ</td></tr>
+        <tr><td>Thursday</td><td>10:00 AM</td><td>Adult BJJ</td></tr>
+        <tr><td>Thursday</td><td>4:00 PM</td><td>Kids BJJ</td></tr>
+        <tr><td>Thursday</td><td>7:00 PM</td><td>Adult BJJ</td></tr>
+        <tr><td>Sunday</td><td>11:30 AM</td><td>Women's Self Defense Workshop</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing">
+  <span class="section-eyebrow">Membership</span>
   <h2 class="section-title">MEMBERSHIP & <span>PRICING</span></h2>
   <p class="section-sub">Pick the plan that fits you — cancel or switch anytime.</p>
   <div class="pricing-grid">
@@ -197,16 +312,17 @@
       <div>
         <h3>Kids Unlimited</h3>
         <div class="amount">$120<sub>/mo</sub></div>
-        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Unlimited Kids BJJ classes</p>
+        <p class="desc">Unlimited Kids BJJ classes</p>
       </div>
       <a class="btn" href="https://buy.stripe.com/5kQ9ATh0J6HR0E968fdZ605" target="_blank">Join Now</a>
     </div>
 
-    <div class="price-card">
+    <div class="price-card popular">
+      <span class="popular-badge">Most Popular</span>
       <div>
         <h3>Adults Unlimited</h3>
         <div class="amount">$150<sub>/mo</sub></div>
-        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Unlimited Adult BJJ & No-Gi classes</p>
+        <p class="desc">Unlimited Adult BJJ & No-Gi classes</p>
       </div>
       <a class="btn" href="https://buy.stripe.com/14A00jcKtgir3QleELdZ600" target="_blank">Join Now</a>
     </div>
@@ -215,65 +331,6 @@
       <div>
         <h3>Drop-In Class</h3>
         <div class="amount">$35</div>
-        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Single class, any program</p>
+        <p class="desc">Single class, any program</p>
       </div>
-      <a class="btn" href="https://book.stripe.com/dRmeVd5i1girfz3cwDdZ601" target="_blank">Book Now</a>
-    </div>
-
-    <div class="price-card">
-      <div>
-        <h3>Private Lesson</h3>
-        <div class="amount">$200</div>
-        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">One-on-one private session</p>
-      </div>
-      <a class="btn" href="https://buy.stripe.com/28EcN5fWF2rBdqVbszdZ602" target="_blank">Book Now</a>
-    </div>
-
-    <div class="price-card">
-      <div>
-        <h3>Private Lesson Package</h3>
-        <div class="amount">$800</div>
-        <p style="color:#aaa;font-size:13px;margin-bottom:15px;">Package of 5 private lessons</p>
-      </div>
-      <a class="btn" href="https://buy.stripe.com/eVq4gzaCl6HR86B7cjdZ603" target="_blank">Book Now</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" style="background:#050505;">
-  <h2 class="section-title">MEET YOUR <span>INSTRUCTOR</span></h2>
-  <div class="about-wrap">
-    <img src="IMAGE_INSTRUCTOR_HEADSHOT.jpg" alt="Joe Moreira Jr.">
-    <div class="about-text">
-      <h3>Joe Moreira Jr.</h3>
-      <p><strong>1st Degree Black Belt</strong> under his father, Grandmaster Joe Moreira — a 9th degree red belt, UFC veteran, and pioneer of jiujitsu with an association spanning over 22 countries worldwide.</p>
-      <p>Joe Jr. started training as a young child and has competed in multiple events at the highest level. He teaches using the Moreira Method — a system built on over 400 years of ancestry and development, based on rules and principles rather than a rigid series of techniques.</p>
-      <p>His mission is to make the community a better, more integrated place by introducing an art that connects the body, mind, and spirit — training through diversity, building connections that carry beyond the mats, and helping students love themselves and others more.</p>
-    </div>
-  </div>
-</section>
-
-<!-- LOCATION -->
-<section id="location">
-  <div class="location-wrap">
-    <h2 class="section-title">FIND <span>US</span></h2>
-    <p class="section-sub">4601 Mission Blvd, San Diego, CA 92109</p>
-    <iframe class="map-embed" loading="lazy" src="https://www.google.com/maps?q=4601+Mission+Blvd,+San+Diego,+CA+92109&output=embed"></iframe>
-  </div>
-</section>
-
-<!-- CONTACT / FOOTER -->
-<footer id="contact">
-  <h2 class="section-title" style="margin-bottom:20px;">GET IN <span>TOUCH</span></h2>
-  <p>4601 Mission Blvd, San Diego, CA 92109</p>
-  <p>Email: <a href="mailto:info@pbcommunityjj.com">info@pbcommunityjj.com</a></p>
-  <div class="footer-social">
-    <a href="https://instagram.com/pbcommunityjiujitsu" target="_blank">@pbcommunityjiujitsu</a>
-  </div>
-  <p style="margin-top:25px;color:#555;">&copy; 2026 Pacific Beach Community Jiujitsu. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
+      <a class="btn" href="https
